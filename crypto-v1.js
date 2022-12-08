@@ -3,6 +3,8 @@ import CryptoJS from "crypto-js";
 const password = "password";
 const secret = "secret";
 
+// echo secret | openssl enc -aes-256-cbc -base64 -k password
+
 const encrypted = CryptoJS.AES.encrypt(secret, password);
 const base64Secret = encrypted.toString();
 

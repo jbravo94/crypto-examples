@@ -3,6 +3,8 @@ import CryptoJS from "crypto-js";
 var message = "SuperSecret!!";
 var password = "Password01";
 
+// echo "SuperSecret!!" | openssl enc -base64 -aes-256-cbc -K 31c3f03aa212477e314973b15259dec6ee094c6607772a5dfc6cc8a75a068f07 -iv 31c3f03aa212477e314973b15259dec6 -k Password01 -nosalt
+
 var getKeyAndIV = function (password) {
   var keyBitLength = 256;
   var ivBitLength = 128;
