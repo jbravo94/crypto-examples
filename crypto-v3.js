@@ -39,7 +39,8 @@ const base64Secret = data.toString();
 console.log(
   `echo ${base64Secret} | openssl enc -base64 -d | openssl enc -d -aes-256-cbc -K ${keyHex} -iv ${ivHex} -k ${password} -nosalt`
 );
-//echo mTbfrvvvGVHY+LCZfzSeqg== | openssl enc -base64 -d | openssl enc -d -aes-256-cbc -K 31c3f03aa212477e314973b15259dec6ee094c6607772a5dfc6cc8a75a068f07 -iv 31c3f03aa212477e314973b15259dec6 -k Password01 -nosalt
+
+// echo mTbfrvvvGVHY+LCZfzSeqg== | openssl enc -base64 -d | openssl enc -d -aes-256-cbc -K 31c3f03aa212477e314973b15259dec6ee094c6607772a5dfc6cc8a75a068f07 -iv 31c3f03aa212477e314973b15259dec6 -k Password01 -nosalt
 
 var dc = data.ciphertext.toString(CryptoJS.enc.Base64);
 var dk = data.key.toString(CryptoJS.enc.Base64);
