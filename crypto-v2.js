@@ -3,7 +3,7 @@ import CryptoJS from "crypto-js";
 const password = "123dddddd";
 const secret = "test";
 
-// echo test | openssl enc -base64 -aes-256-cbc -K d8a26e4b184264c6166691eeba0afa3327119c417efbaccfcbca7a762c56a863 -iv 1bd381d5d8ddb71296e042b6bdebde62 -k 123dddddd
+// echo test | openssl enc -base64 -aes-256-cbc -md MD5 -K d8a26e4b184264c6166691eeba0afa3327119c417efbaccfcbca7a762c56a863 -iv 1bd381d5d8ddb71296e042b6bdebde62 -k 123dddddd
 
 const encrypt = (details) => {
   // Create the main encryption.
@@ -27,10 +27,10 @@ const encrypt = (details) => {
 const data = encrypt({ secret: secret, password: password });
 
 console.log(
-  `echo ${data.base64Secret} | openssl enc -base64 -d | openssl enc -d -aes-256-cbc -K ${data.keyHex} -iv ${data.ivHex} -k ${password}`
+  `echo ${data.base64Secret} | openssl enc -base64 -d | openssl enc -d -aes-256-cbc -md MD5 -K ${data.keyHex} -iv ${data.ivHex} -k ${password}`
 );
 
-// echo U2FsdGVkX1+wL7+vQSU7DfXGO5DXoqkfu0y4mTyRAqs= | openssl enc -base64 -d | openssl enc -d -aes-256-cbc -K d8a26e4b184264c6166691eeba0afa3327119c417efbaccfcbca7a762c56a863 -iv 1bd381d5d8ddb71296e042b6bdebde62 -k 123dddddd
+// echo U2FsdGVkX1+wL7+vQSU7DfXGO5DXoqkfu0y4mTyRAqs= | openssl enc -base64 -d | openssl enc -d -aes-256-cbc -md MD5 -K d8a26e4b184264c6166691eeba0afa3327119c417efbaccfcbca7a762c56a863 -iv 1bd381d5d8ddb71296e042b6bdebde62 -k 123dddddd
 
 const decrypted = CryptoJS.AES.decrypt(data.base64Secret, password);
 
